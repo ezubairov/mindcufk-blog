@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+development:
+  <<: *default
+  database: mindcufk_blog_development
+
+test:
+  <<: *default
+  database: mindcufk_blog_test
+
+production:
+  <<: *default
+  database: mindcufk_blog_production
+  username: mindcufk_blog
+  password: <%= ENV['MINDCUFK_BLOG_DATABASE_PASSWORD'] %>
